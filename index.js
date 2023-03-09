@@ -1,10 +1,12 @@
 // const cors = require("cors");
 const { setSymbolsList, getSymbolsList } = require("./firestore");
-const { Deta } = require("deta");
 const app = require("express")();
 const { Spot } = require("@binance/connector");
-const deta = process.env.LOCAL? Deta("c0g4mgm6_BdytjHkNCyhT7m1TBN7wdCH3VJsoQVyk"): Deta();
+const CyclicDB = require("cyclic-dynamodb");
+const db = CyclicDB("easy-gray-moose-tamCyclicDB");
+
 const DB_NAME = "symbols";
+const port = process.env.PORT || 3000
 
 let counter = 0;
 const client = new Spot();
@@ -45,17 +47,12 @@ async function promiseHandler(promise) {
 
 // app.use(cors());
 
-app.get("/", async (req, res) => {
-    const data = await client.exchangeInfo().then(response => response.data);
-    res.send(data);
-});
-
 app.get("/api", (_, res) => {
-    res.send("Express on Vercel");
+    res.send("Successful");
 });
 
 app.get("/api/symbols", async (_, res, next) => {
-    const [error, data] = await promiseHandler(getSymbolsList(`${DB_NAME}_${counter}`));
+    const [data, error] = await promiseHandler(getSymbolsList(`${DB_NAME}_${counter}`));
     if (error) {
         next(error);
     } else {
@@ -65,7 +62,7 @@ app.get("/api/symbols", async (_, res, next) => {
 
 app.get("/api/symbols/:symbol", async (req, res, next) => {
     const symbol = req.params.symbol;
-    const db = deta.Base(`${DB_NAME}_${counter}`);
+    const db = db.collection(`${DB_NAME}_${counter}`);
     const [data, error] = await promiseHandler(db.get(symbol));
     if (error) {
         next(error);
@@ -89,7 +86,7 @@ app.post("/api/symbols/actions", async (_, res, next) => {
     }
     const symbolsList = [], symbolsInfo = {};
     console.log(binanceData.symbols)
-    binanceData.symbols.forEach(async symbolInfo => {
+    binanceData.symbols.forEach(symbolInfo => {
         const { symbol, ...rest } = symbolInfo;
         if (rest.isSpotTradingAllowed && rest.status == 'TRADING') {
             symbolsList.push(symbol);
@@ -98,14 +95,16 @@ app.post("/api/symbols/actions", async (_, res, next) => {
     });
 
     try {
+        const ytd = counter;
         const tdy = (counter + 1) % 2;
 
         await Promise.all([
             (async () => {
-                const db = deta.Base(`${DB_NAME}_${tdy}`);
+                const db = db.collection(`${DB_NAME}_${tdy}`);
                 const symbols = Object.keys(symbolsInfo);
                 return Promise.all(symbols.map(async symbol => {
-                    db.put(symbolsInfo[symbol], symbol);
+                    console.log(typeof symbolsInfo[symbol]);
+                    db.set(symbolsInfo[symbol], symbol);
                 }));
             })(),
             (async () => {
@@ -116,10 +115,9 @@ app.post("/api/symbols/actions", async (_, res, next) => {
         console.log("write ran successfully");
 
         counter = tdy;
-        const ytd = (tdy + 1) % 2;
 
         const previousSymbolsList = await getSymbolsList(`${DB_NAME}_${ytd}`);
-        const previousDb = deta.Base(`${DB_NAME}_${ytd}`);
+        const previousDb = db.collection(`${DB_NAME}_${ytd}`);
         previousSymbolsList.forEach(async symbol => {
             await previousDb.delete(symbol);
         });
@@ -132,7 +130,7 @@ app.post("/api/symbols/actions", async (_, res, next) => {
     res.send("actions ran successfully");
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log(`running on port 3000.`);
 });
 
