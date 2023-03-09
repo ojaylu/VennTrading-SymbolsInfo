@@ -1,15 +1,13 @@
 // const cors = require("cors");
 const { setSymbolsList, getSymbolsList } = require("./firestore");
 const app = require("express")();
-const { Spot } = require("@binance/connector");
 const CyclicDb = require("@cyclic.sh/dynamodb")
-const db = CyclicDb("easy-gray-moose-tamCyclicDB");
+const db = CyclicDb("defiant-duck-suspendersCyclicDB");
 
 const DB_NAME = "symbols";
 const port = process.env.PORT || 3000
 
 let counter = 0;
-const client = new Spot();
 
 // function binanceErrorHandler(e) {
 //     if (e.response) {
