@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "fyp-venntrading",
+  "private_key_id": "0f2a7355f521f98b4c7894695811e54aa1c23de8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDMNYcrUsIJ81DX\n73GIiqJHBTft7Pmj/s/VRP0jM2RpgyzUcllchB9sXPMX20HpUvMbqg9cSvPqCa8y\nXiUMb9ivDiZuPRIOuuXsyhL3s+TPjDx6i4dlmQ99Cef61N95xTy5uEipJZe24Om7\nIuC7hz0KQhk/KLUg6ujJ2CEZY1ed+0antU6QSWag3n93Vkqh50JZcXjQgyazCYi4\nSHHEWbk1uk9GFExUQItiAp5Mdn3Xsg7QEaFQ/YWxPQ0A9DzP1gtiXGpAMxylN6qy\nKTHztUkPifNnpjGQtlbT2PuqgZ2q4jfsOAATh/FRi8OHLl4OS+OTVpN750EX8M4g\n3EoYUPHVAgMBAAECggEABGHvtTPQ+0KwDPpUDvCeu/R2N1J7JxRcZIDXB+7d7E/G\n4gZUOaKSRBKYmv33I6lGk2TqcHohUvgDPQr9M4+g8FzW4U3JOeyz64mIr606L2Qc\nliqxbLJEvVO9mUoBQ81CWOAGGy812tRn377HYO7tle9GOG9It9yiw1Yym6dgpYDJ\nufcjScx/AW3Y9lxzSnnq8SdK5HfGgyLsxpjxqt9EwSyYu9oFyHDqzSRh/DiK56PV\nvSdVdPJL5SfQX9nxmP31s1FCOe5xKTcPMwVL8B2WnZIj6yzKd2XFl/872LUKSuQA\nZV1k8UxaJGhkAOUFuCcikduZfyh6XnQSLacvnRHxAQKBgQDpc80tlOs/uwLPmWiy\nYla2FHNoeiwINY4HcfOakJf8hm7h56hJpWEhd8wTJphaOkiwc6I4gQd2kfuzRK5l\njTAhnbO4SS8NwXVrWV2Rw21VxbFjNbARvU/DQonqIz7tOuL6qdTm1n0G5vsOxaTq\npEbkFa9YURrylpAJchEGyVUvVQKBgQDf7q0FDfjl15jROmf4XTHTVQ7M8gVmOA5n\nm2HOaHX/OHfDj5wJg+GlDtrglW+iiPuL3b3WJo2FnuYQ5ohgJSbVbGP6R7UjnEdn\npeDWcbWpXNHUqlMECN5u1960WVK00YCBuF5+CcCqZEek9cUJ/0vCm+1sWsNKyV/s\n3d5qquO4gQKBgQCSgtSf6LgDVTCcbSDh4wmcWBVd2l7MACBU19UUie540z2/lQ1u\nutXMlUyEMFKpPa7k3o1OfNvcNB4NEeuJXCR61Gg4HeXj8ifo6TrqAgYaMGn1Y3pO\nh8sJNjcrtFcHt09AFVnCTZZFwKyLRssLX3IGLv3OpYgN+yQGaYn6AlztyQKBgQCL\nyOO8egJbB4Bfa0Qnp5VIxJnemV2Bd5CWYEpnnJG75bXtH6JZ1jdu350GAIKVRUkx\nABRWr+478PrQpfePfOGG7IhkXYrXVeDE9KkrdAPgWw6o4EG+DQM80gg1MGUOdpDv\naPWjW9cnBj4q3ThIi1LxgoBs2SN7dcUpiT4j+9T3AQKBgFx+6W8+hjontLlqrHZW\nZAe9Sq8OFWrP+7KxImMnNcksNJ0PnCOwMu78Qx/uI/qBju23dkl0c3CYvXL54luB\n7iKYgzDIXang5Z6vgY3klnBCMv5srRjfvbs9WCAp4+bl5KUUCbtDRhZKY9Gox6oI\nF71VXi/5ktOUzAahAf7f2XLg\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-u5q9j@fyp-venntrading.iam.gserviceaccount.com",
+  "client_id": "113412478656359147206",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-u5q9j%40fyp-venntrading.iam.gserviceaccount.com"
+}

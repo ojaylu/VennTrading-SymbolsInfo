@@ -1,0 +1,1 @@
+{"id":"98c9e8cd-9df1-4cae-98ea-a0ff7240184d","space":52367,"runtime":"nodejs14.x","name":"symbols-info","path":"wop5xj","project":"c0g4mgm6","account":"144798365827","region":"ap-southeast-1","deps":["deta@^1.1.0","express@^4.18.2","firebase-admin@^11.5.0","@binance/connector@^2.0.0"],"envs":["TEST"],"public":true,"log_level":"debug","cron":""}
