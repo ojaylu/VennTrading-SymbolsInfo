@@ -2,8 +2,8 @@
 const { setSymbolsList, getSymbolsList } = require("./firestore");
 const app = require("express")();
 const { Spot } = require("@binance/connector");
-const CyclicDB = require("cyclic-dynamodb");
-const db = CyclicDB("easy-gray-moose-tamCyclicDB");
+const CyclicDb = require("@cyclic.sh/dynamodb")
+const db = CyclicDb("easy-gray-moose-tamCyclicDB");
 
 const DB_NAME = "symbols";
 const port = process.env.PORT || 3000
@@ -62,8 +62,8 @@ app.get("/api/symbols", async (_, res, next) => {
 
 app.get("/api/symbols/:symbol", async (req, res, next) => {
     const symbol = req.params.symbol;
-    const db = db.collection(`${DB_NAME}_${counter}`);
-    const [data, error] = await promiseHandler(db.get(symbol));
+    const symbolsDb = db.collection(`${DB_NAME}_${counter}`);
+    const [data, error] = await promiseHandler(symbolsDb.get(symbol));
     if (error) {
         next(error);
     } else {
@@ -100,11 +100,11 @@ app.post("/api/symbols/actions", async (_, res, next) => {
 
         await Promise.all([
             (async () => {
-                const db = db.collection(`${DB_NAME}_${tdy}`);
+                const symbolsDb = db.collection(`${DB_NAME}_${tdy}`);
                 const symbols = Object.keys(symbolsInfo);
                 return Promise.all(symbols.map(async symbol => {
                     console.log(typeof symbolsInfo[symbol]);
-                    db.set(symbolsInfo[symbol], symbol);
+                    symbolsDb.set(symbol, symbolsInfo[symbol]);
                 }));
             })(),
             (async () => {
