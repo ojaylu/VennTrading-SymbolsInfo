@@ -49,6 +49,10 @@ app.get("/api", (_, res) => {
     res.send("Successful");
 });
 
+app.get("/counter", (_, res) => {
+    res.send(counter);
+})
+
 app.get("/api/symbols", async (_, res, next) => {
     const [data, error] = await promiseHandler(getSymbolsList(`${DB_NAME}_${counter}`));
     if (error) {
