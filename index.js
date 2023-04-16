@@ -80,7 +80,7 @@ app.get("/api/symbols/:symbol", async (req, res, next) => {
 
 app.get("/api/symbols/:symbol/db/:db", async (req, res, next) => {
     const symbol = req.params.symbol;
-    const symbolsDb = db.collection(`${DB_NAME}_${res.params.id}`);
+    const symbolsDb = db.collection(`${DB_NAME}_${res.params.db}`);
     const [data, error] = await promiseHandler(symbolsDb.get(symbol));
     if (error) {
         next(error);
