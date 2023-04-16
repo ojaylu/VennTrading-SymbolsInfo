@@ -50,7 +50,7 @@ app.get("/api", (_, res) => {
 });
 
 app.get("/counter", (_, res) => {
-    res.send(counter);
+    res.json({ counter });
 })
 
 app.get("/api/symbols", async (_, res, next) => {
