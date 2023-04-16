@@ -78,6 +78,22 @@ app.get("/api/symbols/:symbol", async (req, res, next) => {
     }
 });
 
+app.get("/api/symbols/:symbol/db/:db", async (req, res, next) => {
+    const symbol = req.params.symbol;
+    const symbolsDb = db.collection(`${DB_NAME}_${res.params.id}`);
+    const [data, error] = await promiseHandler(symbolsDb.get(symbol));
+    if (error) {
+        next(error);
+    } else {
+        if (data) {
+            res.json(data);
+        } else {
+            res.status(404);
+            res.send("invalid symbol");
+        }
+    }
+});
+
 app.post("/api/symbols/actions", async (_, res, next) => {
     const [binanceData, binanceError] = await promiseHandler(fetch("https://testnet.binance.vision/api/v3/exchangeInfo").then(res => res.json()));
     if (binanceError) {
